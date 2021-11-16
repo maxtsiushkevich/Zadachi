@@ -1,0 +1,24 @@
+// Ввести целые числа N и M. Определить являются ли они взаимно простыми, то есть не имеют общих делителей.
+
+#include <stdio.h>
+int main()
+{
+    int a, b, n;
+    printf("vvedite chislo A: ");
+    scanf("%d", &a);
+    printf("vvedite chislo B: ");
+    scanf("%d", &b);
+    while (a != 0 & b != 0) // алгоритм Евклида определение НОД чисел
+    {
+        if (a > b)
+            a = a % b;
+        else
+            b = b % a;
+    }
+    n = a + b;
+    printf("%d\n", n);
+    if (n ==1)
+        printf("числа взимно простые");
+    else
+        printf("числа не взаимно простые");
+}
