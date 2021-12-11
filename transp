@@ -1,0 +1,32 @@
+// транспонирование матрицы
+
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int **mtr, a;
+    printf ("Введите размерность матрицы: ");
+    scanf ("%d", &a);
+
+    mtr = (int**) malloc (sizeof(int*)*a);
+    for (int i=0; i<a; i++)
+        mtr[i] = (int *) malloc(a * sizeof(int));
+
+    for (int i = 0; i < a; i++)
+    {
+        for (int j = 0; j < a; j++)
+        {
+            printf("Введите элемент матрицы %dx%d = ", i, j);
+            scanf("%d", &mtr[i][j]);
+        }
+    }
+    
+    for (int i=0; i<a; i++)
+    {
+        for (int j=0; j<a; j++)
+        {
+            printf("%d ", mtr[j][i]);
+        }
+        printf ("\n");
+    }
+}
