@@ -29,4 +29,6 @@ int main()
         }
         printf ("\n");
     }
+     free (mtr);
+    return 0;
 }
