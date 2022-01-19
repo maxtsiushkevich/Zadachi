@@ -1,0 +1,54 @@
+// отсортировать методом вставки выбранную строку матрицы
+#include <stdio.h>
+#include <stdlib.h>
+void vstavka (int *str, int kl);
+int main()
+{
+    int **mas;
+    int n, m, i, j, k, *str, t;
+    printf("Введите количество строк и столбцов: ");
+    scanf("%d %d", &n, &m);
+    mas = (int**) malloc(n*sizeof(int*));
+    for (int k=0; k<n; k++)
+        mas[k] = malloc (m*sizeof(int));
+    str = (int*) malloc (m*sizeof(int));
+    for (i=0; i<n; i++)
+    {
+        for (j = 0; j < m; j++)
+        {
+            printf("Введите элемент %dx%d ", i, j);
+            scanf("%d", &mas[i][j]);
+        }
+    }
+    printf("\nМатрица %dx%d:\n", n, m);
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j < m; j++)
+        {
+            printf(" %d", mas[i][j]);
+        }
+        printf("\n");
+    }
+    printf("Введите строку для сортировки: ");
+    scanf ("%d", &i);
+    for (k=0; k<m; k++)
+        str[k] = mas[i-1][k];
+
+    vstavka (str, m);
+
+    for (i=0; i<m; i++)
+        printf("%d ", str[i]);
+}
+void vstavka(int *str, int kl)
+{
+    int i, j, kk;
+    for (i=1; i<kl; i++)
+    {
+        j = i-1;
+        kk = str[i];
+        while (j>=0 && kk<str[j])
+            str[j-- + 1] = str[j];
+        str[j+1] = kk;
+    }
+    printf("Отсортированная строка:\n");
+}
