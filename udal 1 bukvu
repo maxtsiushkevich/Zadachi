@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+void deletefirstsymbol(char* str, int n)
+{
+    char a = str[0];
+    for (int i = 0; i < n; i++)
+    {
+        while (str[i] == a)
+        {
+            int k = i;
+            for (; i < n; i++)
+            {
+                str[i] = str[i + 1];
+            }
+            i = k - 1;
+        }
+    }
+    puts(str);
+}
+
+int main()
+{
+    char str[] = "rkfjm irg rkrfnrkf klkfmrk rkgrgrkjfr";
+    deletefirstsymbol(str, strlen(str));
+
+    return 0;
+}
